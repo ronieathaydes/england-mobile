@@ -2,10 +2,24 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
-	let greet = Greeting().greeting()
+    let fieldService = FieldService()
 
+    @State var result = "Loading..."
+    
+    func load() {
+        fieldService.getFields { result, error in
+            if let result = result {
+                self.result = result
+            } else if let error = error {
+                self.result = "Error: \(error)"
+            }
+        }
+    }
+    
 	var body: some View {
-		Text(greet)
+        Text(result).onAppear() {
+            load()
+        }
 	}
 }
 
