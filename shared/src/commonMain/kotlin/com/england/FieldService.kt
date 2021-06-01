@@ -8,6 +8,7 @@ import kotlinx.serialization.json.Json
 
 class FieldService {
 
+    @Throws(Exception::class)
     suspend fun getFields(): String {
         val urlString = "https://england.rvichetti.dev/fields"
         val httpClient = HttpClient {
