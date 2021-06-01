@@ -1,16 +1,22 @@
 package com.england
 
 import io.ktor.client.HttpClient
+import io.ktor.client.features.json.JsonFeature
+import io.ktor.client.features.json.serializer.KotlinxSerializer
 import io.ktor.client.request.get
-import io.ktor.client.statement.HttpResponse
-import io.ktor.client.statement.readText
+import kotlinx.serialization.json.Json
 
 class FieldService {
 
     suspend fun getFields(): String {
         val urlString = "https://england.rvichetti.dev/fields"
-        val httpClient = HttpClient()
-        val response: HttpResponse = httpClient.get(urlString)
-        return response.readText()
+        val httpClient = HttpClient {
+            install(JsonFeature) {
+                val json = Json { ignoreUnknownKeys = true }
+                serializer = KotlinxSerializer(json)
+            }
+        }
+        val fields: List<FieldResponse> = httpClient.get(urlString)
+        return fields.joinToString(separator = "\n") { field -> field.name }
     }
 }
