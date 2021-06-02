@@ -9,7 +9,7 @@ import kotlinx.serialization.json.Json
 class FieldService {
 
     @Throws(Exception::class)
-    suspend fun getFields(): String {
+    suspend fun getFields(): List<Field> {
         val urlString = "https://england.rvichetti.dev/fields"
         val httpClient = HttpClient {
             install(JsonFeature) {
@@ -18,6 +18,6 @@ class FieldService {
             }
         }
         val fields: List<FieldResponse> = httpClient.get(urlString)
-        return fields.joinToString(separator = "\n") { field -> field.name }
+        return fields.map { field -> Field(name = field.name) }
     }
 }

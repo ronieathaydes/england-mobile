@@ -13,6 +13,5 @@ data class FieldResponse(
     @SerialName("state") val state: String,
     @SerialName("neighborhood") val neighborhood: String,
     @SerialName("number") val number: String,
-    @SerialName("latitude") val latitude: Double,
-    @SerialName("longitude") val longitude: Double,
+    @SerialName("location") val location: LocationResponse,
 )

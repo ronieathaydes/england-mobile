@@ -9,7 +9,7 @@ struct ContentView: View {
     func load() {
         fieldService.getFields { result, error in
             if let result = result {
-                self.result = result
+                self.result = result.map { field in field.name }.joined(separator: "\n")
             } else if let error = error {
                 self.result = "Error: \(error)"
             }

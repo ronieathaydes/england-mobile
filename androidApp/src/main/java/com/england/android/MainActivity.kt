@@ -22,10 +22,10 @@ class MainActivity : AppCompatActivity() {
         mainScope.launch {
             runCatching {
                 fieldService.getFields()
-            }.onSuccess {
-                tv.text = it
-            }.onFailure {
-                tv.text = "Error: ${it.localizedMessage}"
+            }.onSuccess { result ->
+                tv.text = result.joinToString(separator = "\n") { field -> field.name }
+            }.onFailure { error ->
+                tv.text = "Error: ${error.localizedMessage}"
             }
         }
     }
