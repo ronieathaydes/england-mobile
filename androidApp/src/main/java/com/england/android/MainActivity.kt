@@ -15,6 +15,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.england.FieldService
+import com.england.android.theme.EnglandTheme
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -42,13 +43,15 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen(content: String) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight(),
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(text = content)
+    EnglandTheme {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(text = content)
+        }
     }
 }
