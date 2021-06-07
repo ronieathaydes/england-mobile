@@ -1,4 +1,4 @@
-package com.england.android
+package com.england.android.ui.feed
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -7,16 +7,12 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class HomeViewModel(
+class FeedViewModel(
     private val fieldService: FieldService = FieldService()
 ) : ViewModel() {
 
-    private val _uiStateFlow = MutableStateFlow(UiState())
-    val uiStateFlow: StateFlow<UiState> = _uiStateFlow
-
-    data class UiState(
-        val content: String = "",
-    )
+    private val _uiStateFlow = MutableStateFlow(FeedUiState())
+    val uiStateFlow: StateFlow<FeedUiState> = _uiStateFlow
 
     init {
         viewModelScope.launch {

@@ -9,6 +9,7 @@ dependencies {
     implementation(project(":shared"))
     implementation("androidx.appcompat:appcompat:1.3.0")
     implementation("androidx.compose.ui:ui:$composeVersion")
+    implementation("androidx.compose.ui:ui-tooling:$composeVersion")
     implementation("androidx.compose.material:material:$composeVersion")
     implementation("androidx.activity:activity-compose:1.3.0-beta01")
     implementation("androidx.navigation:navigation-compose:2.4.0-alpha02")
