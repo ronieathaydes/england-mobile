@@ -7,9 +7,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class MainViewModel : ViewModel() {
-
-    private val fieldService = FieldService()
+class HomeViewModel(
+    private val fieldService: FieldService = FieldService()
+) : ViewModel() {
 
     private val _uiStateFlow = MutableStateFlow(UiState())
     val uiStateFlow: StateFlow<UiState> = _uiStateFlow
