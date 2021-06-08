@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 fun FeedScreen(
     feedViewModel: FeedViewModel = FeedViewModel()
 ) {
-    val uiState = feedViewModel.uiStateFlow.collectAsState()
+    val uiState = feedViewModel.stateFlow.collectAsState()
     Row(
         modifier = Modifier
             .fillMaxWidth()
