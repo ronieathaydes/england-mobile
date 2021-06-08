@@ -13,7 +13,7 @@ fun MainScreenPreview() {
 @Composable
 fun BottomBarPreview() {
     BottomBar(
-        selectedItem = "home",
+        selectedItem = MainMenu.FeedItem,
         onItemSelected = {},
     )
 }
