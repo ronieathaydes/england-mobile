@@ -8,11 +8,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.hilt.navigation.compose.hiltViewModel
+import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun FeedScreen(
-    feedViewModel: FeedViewModel = hiltViewModel()
+    feedViewModel: FeedViewModel = getViewModel()
 ) {
     val uiState = feedViewModel.stateFlow.collectAsState()
     Row(

@@ -1,19 +1,17 @@
 plugins {
     id("com.android.application")
-    id("dagger.hilt.android.plugin")
     kotlin("android")
-    kotlin("kapt")
 }
 
+val koinVersion = rootProject.extra["koinVersion"]
 val composeVersion = "1.0.0-beta08"
-val hiltVersion = rootProject.extra["hiltVersion"]
 
 dependencies {
     implementation(project(":shared"))
     implementation("androidx.appcompat:appcompat:1.3.0")
 
-    implementation("com.google.dagger:hilt-android:$hiltVersion")
-    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
+    implementation("io.insert-koin:koin-android:$koinVersion")
+    implementation("io.insert-koin:koin-androidx-compose:$koinVersion")
 
     implementation("androidx.compose.ui:ui:$composeVersion")
     implementation("androidx.compose.ui:ui-tooling:$composeVersion")
@@ -21,13 +19,8 @@ dependencies {
 
     implementation("androidx.activity:activity-compose:1.3.0-beta01")
     implementation("androidx.navigation:navigation-compose:2.4.0-alpha02")
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0-alpha02")
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3")
-}
-
-kapt {
-    correctErrorTypes = true
 }
 
 android {

@@ -1,7 +1,15 @@
 package com.england.android
 
 import android.app.Application
-import dagger.hilt.android.HiltAndroidApp
+import com.england.android.ui.feed.feedModule
+import com.england.startKoin
 
-@HiltAndroidApp
-class EnglandApplication : Application()
+class EnglandApplication : Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+        startKoin {
+            modules(feedModule)
+        }
+    }
+}

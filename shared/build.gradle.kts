@@ -18,7 +18,8 @@ kotlin {
         else
             ::iosX64
 
-    iosTarget("ios") {}
+    iosTarget("ios") {
+    }
 
     cocoapods {
         summary = "Some description for the Shared Module"
@@ -29,9 +30,11 @@ kotlin {
     }
     
     sourceSets {
+        val koinVersion = rootProject.extra["koinVersion"]
         val ktorVersion = "1.5.4"
         val commonMain by getting {
             dependencies {
+                implementation("io.insert-koin:koin-core:$koinVersion")
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-client-serialization:$ktorVersion")
             }
