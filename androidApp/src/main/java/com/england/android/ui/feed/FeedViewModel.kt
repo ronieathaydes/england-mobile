@@ -5,10 +5,12 @@ import androidx.lifecycle.viewModelScope
 import com.england.FieldService
 import com.england.android.arch.UiState
 import com.england.android.arch.UiStateImpl
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class FeedViewModel(
-    private val fieldService: FieldService = FieldService()
+@HiltViewModel
+class FeedViewModel @Inject constructor(
 ) : ViewModel(), UiState<FeedUiState> by UiStateImpl(FeedUiState()) {
 
     init {
@@ -16,7 +18,7 @@ class FeedViewModel(
             setState { copy(content = "Loading...") }
 
             runCatching {
-                fieldService.getFields()
+                FieldService().getFields()
             }.onSuccess { result ->
                 val content = result.joinToString(separator = "\n") { field -> field.name }
                 setState { copy(content = content) }
